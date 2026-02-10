@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    读数管理
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>
+            水表读数管理
+        </h1>
+        <hr />
+        <div {{ react_component('ReadingList') }}></div>
+    </div>
+{% endblock %}

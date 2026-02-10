@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    仪表盘
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>
+            仪表盘
+        </h1>
+        <hr />
+        <div {{ react_component('WaterConsumption') }}></div>
+    </div>
+{% endblock %}
