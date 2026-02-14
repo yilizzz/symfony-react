@@ -18,14 +18,15 @@ class WaterMeter
     #[ORM\Column(length: 255)]
     private ?string $serialNumber = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $location = null;
-
     /**
      * @var Collection<int, Reading>
      */
     #[ORM\OneToMany(targetEntity: Reading::class, mappedBy: 'waterMeter')]
     private Collection $readings;
+
+    #[ORM\ManyToOne(inversedBy: 'waterMeters')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Location $location = null;
 
     public function __construct()
     {
@@ -45,18 +46,6 @@ class WaterMeter
     public function setSerialNumber(string $serialNumber): static
     {
         $this->serialNumber = $serialNumber;
-
-        return $this;
-    }
-
-    public function getLocation(): ?string
-    {
-        return $this->location;
-    }
-
-    public function setLocation(string $location): static
-    {
-        $this->location = $location;
 
         return $this;
     }
@@ -87,6 +76,18 @@ class WaterMeter
                 $reading->setWaterMeter(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLocation(): ?Location
+    {
+        return $this->location;
+    }
+
+    public function setLocation(?Location $location): static
+    {
+        $this->location = $location;
 
         return $this;
     }
