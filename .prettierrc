@@ -1,11 +1,20 @@
 {
-  "plugins": ["prettier-plugin-twig-melody"],
-  "overrides": [
-    {
-      "files": "*.twig",
-      "options": {
-        "parser": "melody"
-      }
-    }
-  ]
+    "plugins": ["prettier-plugin-twig-melody", "@prettier/plugin-php"],
+    "overrides": [
+        {
+            "files": "*.twig",
+            "options": {
+                "parser": "melody"
+            }
+        },
+        {
+            "files": "*.php",
+            "options": {
+                "parser": "php",
+                "phpVersion": "8.4",
+                "trailingCommaPHP": true,
+                "braceStyle": "psr-2"
+            }
+        }
+    ]
 }

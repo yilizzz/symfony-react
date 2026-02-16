@@ -15,11 +15,11 @@ class Location
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'locations')]
+    #[ORM\ManyToOne(inversedBy: "locations")]
     #[ORM\JoinColumn(nullable: false)]
     private ?Street $street = null;
 
-    #[ORM\ManyToOne(inversedBy: 'locations')]
+    #[ORM\ManyToOne(inversedBy: "locations")]
     #[ORM\JoinColumn(nullable: false)]
     private ?Owner $owner = null;
 
@@ -32,7 +32,7 @@ class Location
     /**
      * @var Collection<int, WaterMeter>
      */
-    #[ORM\OneToMany(targetEntity: WaterMeter::class, mappedBy: 'location')]
+    #[ORM\OneToMany(targetEntity: WaterMeter::class, mappedBy: "location")]
     private Collection $waterMeters;
 
     public function __construct()

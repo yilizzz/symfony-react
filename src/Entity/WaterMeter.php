@@ -21,10 +21,10 @@ class WaterMeter
     /**
      * @var Collection<int, Reading>
      */
-    #[ORM\OneToMany(targetEntity: Reading::class, mappedBy: 'waterMeter')]
+    #[ORM\OneToMany(targetEntity: Reading::class, mappedBy: "waterMeter")]
     private Collection $readings;
 
-    #[ORM\ManyToOne(inversedBy: 'waterMeters')]
+    #[ORM\ManyToOne(inversedBy: "waterMeters")]
     #[ORM\JoinColumn(nullable: false)]
     private ?Location $location = null;
 
@@ -90,5 +90,9 @@ class WaterMeter
         $this->location = $location;
 
         return $this;
+    }
+    public function __toString(): string
+    {
+        return $this->serialNumber;
     }
 }

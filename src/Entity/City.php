@@ -21,7 +21,7 @@ class City
     /**
      * @var Collection<int, Street>
      */
-    #[ORM\OneToMany(targetEntity: Street::class, mappedBy: 'city')]
+    #[ORM\OneToMany(targetEntity: Street::class, mappedBy: "city")]
     private Collection $streets;
 
     public function __construct()
@@ -74,5 +74,9 @@ class City
         }
 
         return $this;
+    }
+    public function __toString(): string
+    {
+        return $this->name; // 这样在后台下拉框里显示的就是“Paris”而不是“City #1”
     }
 }

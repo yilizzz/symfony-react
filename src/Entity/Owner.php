@@ -30,7 +30,7 @@ class Owner
     /**
      * @var Collection<int, Location>
      */
-    #[ORM\OneToMany(targetEntity: Location::class, mappedBy: 'owner')]
+    #[ORM\OneToMany(targetEntity: Location::class, mappedBy: "owner")]
     private Collection $locations;
 
     public function __construct()
@@ -119,5 +119,9 @@ class Owner
         }
 
         return $this;
+    }
+    public function __toString(): string
+    {
+        return $this->name;
     }
 }
